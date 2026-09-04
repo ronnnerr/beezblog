@@ -22,6 +22,22 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
   return (
     <div className="article-body">
       {blocks.map((block, blockIndex) => {
+        if (block.type === 'list') {
+          const List = block.ordered ? 'ol' : 'ul'
+
+          return (
+            <List key={blockIndex}>
+              {block.items.map((item, itemIndex) => (
+                <li key={itemIndex}>
+                  {item.map((run, runIndex) => (
+                    <InlineContent key={runIndex} run={run} index={runIndex} />
+                  ))}
+                </li>
+              ))}
+            </List>
+          )
+        }
+
         const content = block.content.map((run, runIndex) => (
           <InlineContent key={runIndex} run={run} index={runIndex} />
         ))
@@ -35,4 +51,3 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
     </div>
   )
 }
-

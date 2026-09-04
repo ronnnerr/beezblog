@@ -1,7 +1,14 @@
 import articleData from './articles.json'
 import type { Article } from './types'
 
-export type { Article, ArticleBlock, ArticleInline, ArticleTopic } from './types'
+export type {
+  Article,
+  ArticleBlock,
+  ArticleInline,
+  ArticleListBlock,
+  ArticleTextBlock,
+  ArticleTopic,
+} from './types'
 
 export const articles = articleData as Article[]
 
@@ -18,4 +25,3 @@ export function getNextArticle(slug: string): Article | undefined {
 
   return articles[(index + 1) % articles.length]
 }
-

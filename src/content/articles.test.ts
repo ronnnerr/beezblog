@@ -24,5 +24,17 @@ describe('Beeezo article collection', () => {
     expect(getNextArticle(articles.at(-1)!.slug)?.slug).toBe(articles[0].slug)
     expect(getNextArticle('missing')).toBeUndefined()
   })
-})
 
+  it('keeps the local reading copy free of LinkedIn routing and import whitespace artifacts', () => {
+    for (const article of articles) {
+      for (const block of article.blocks) {
+        const runs = block.type === 'list' ? block.items.flat() : block.content
+
+        for (const run of runs) {
+          expect(run.text).not.toMatch(/\s{2,}/)
+          expect(run.href ?? '').not.toMatch(/linkedin\.com/i)
+        }
+      }
+    }
+  })
+})

@@ -14,10 +14,18 @@ export interface ArticleInline {
   href?: string
 }
 
-export interface ArticleBlock {
+export interface ArticleTextBlock {
   type: 'heading' | 'paragraph'
   content: ArticleInline[]
 }
+
+export interface ArticleListBlock {
+  type: 'list'
+  ordered?: boolean
+  items: ArticleInline[][]
+}
+
+export type ArticleBlock = ArticleTextBlock | ArticleListBlock
 
 export interface Article {
   slug: string
@@ -31,4 +39,3 @@ export interface Article {
   readMinutes: number
   blocks: ArticleBlock[]
 }
-

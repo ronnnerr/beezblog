@@ -25,6 +25,8 @@ export function ArticleReader() {
       return
     }
 
+    window.scrollTo(0, 0)
+
     const previousTitle = document.title
     let description = document.querySelector<HTMLMetaElement>('meta[name="description"]')
     const createdDescription = !description
@@ -96,7 +98,7 @@ export function ArticleReader() {
         <div className="reader__layout">
           <aside className="reader__utility" aria-label="Article tools">
             <p>Share this idea</p>
-            <CopyLinkButton />
+            <CopyLinkButton key={article.slug} />
           </aside>
           <ArticleBody blocks={article.blocks} />
         </div>
@@ -121,4 +123,3 @@ export function ArticleReader() {
     </main>
   )
 }
-

@@ -65,6 +65,23 @@ describe('Beeezo blog routes', () => {
     expect(screen.queryByRole('link', { name: /linkedin/i })).not.toBeInTheDocument()
   })
 
+  it('preserves newsletter bullet lists in the Beeezo reader', () => {
+    renderRoute('/marketing-has-an-input-problem')
+
+    expect(screen.getByText('traffic').closest('li')).toBeVisible()
+    expect(screen.getByText('clicks').closest('li')).toBeVisible()
+    expect(screen.getByText('conversions').closest('li')).toBeVisible()
+  })
+
+  it('preserves numbered newsletter steps in the Beeezo reader', () => {
+    renderRoute('/missing-step-between-attention-and-experience')
+
+    expect(screen.getByText('The first is getting attention.').closest('ol')).toBeVisible()
+    expect(
+      screen.getByText('The second is turning that attention into meaningful experience.').closest('ol'),
+    ).toBeVisible()
+  })
+
   it('updates page metadata and points readers to the next local edition', () => {
     renderRoute('/marketing-beyond-bots')
 
@@ -90,5 +107,28 @@ describe('Beeezo blog routes', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Copy article link' }))
 
     expect(await screen.findByRole('button', { name: 'Link copied' })).toBeVisible()
+  })
+
+  it('returns to the top and resets reader tools when opening the next local edition', async () => {
+    const scrollTo = vi.spyOn(window, 'scrollTo').mockImplementation(() => undefined)
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText },
+    })
+    renderRoute('/marketing-beyond-bots')
+
+    fireEvent.click(screen.getByRole('button', { name: 'Copy article link' }))
+    expect(await screen.findByRole('button', { name: 'Link copied' })).toBeVisible()
+    fireEvent.click(screen.getByRole('link', { name: /Read next: Action-Based Marketing/i }))
+
+    expect(
+      await screen.findByRole('heading', {
+        level: 1,
+        name: 'Action-Based Marketing Starts With Your Product',
+      }),
+    ).toBeVisible()
+    expect(screen.getByRole('button', { name: 'Copy article link' })).toBeVisible()
+    expect(scrollTo).toHaveBeenCalledWith(0, 0)
   })
 })

@@ -145,11 +145,33 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "the action;  the target audience;  campaign requirements;  the reward;  and the campaign budget."
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "the action;"
+            }
+          ],
+          [
+            {
+              "text": "the target audience;"
+            }
+          ],
+          [
+            {
+              "text": "campaign requirements;"
+            }
+          ],
+          [
+            {
+              "text": "the reward;"
+            }
+          ],
+          [
+            {
+              "text": "and the campaign budget."
+            }
+          ]
         ]
       },
       {
@@ -245,11 +267,28 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "Product trials  App downloads/installs  Completed onboarding  First transactions"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "Product trials"
+            }
+          ],
+          [
+            {
+              "text": "App downloads/installs"
+            }
+          ],
+          [
+            {
+              "text": "Completed onboarding"
+            }
+          ],
+          [
+            {
+              "text": "First transactions"
+            }
+          ]
         ]
       },
       {
@@ -262,11 +301,23 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "Original content creation  Social engagement  Community participation"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "Original content creation"
+            }
+          ],
+          [
+            {
+              "text": "Social engagement"
+            }
+          ],
+          [
+            {
+              "text": "Community participation"
+            }
+          ]
         ]
       },
       {
@@ -279,11 +330,23 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "Product feedback  Surveys/Polls  Educational and Learn & Earn campaigns"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "Product feedback"
+            }
+          ],
+          [
+            {
+              "text": "Surveys/Polls"
+            }
+          ],
+          [
+            {
+              "text": "Educational and Learn & Earn campaigns"
+            }
+          ]
         ]
       },
       {
@@ -501,11 +564,19 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "The first is getting attention.  The second is turning that attention into meaningful experience."
-          }
+        "type": "list",
+        "ordered": true,
+        "items": [
+          [
+            {
+              "text": "The first is getting attention."
+            }
+          ],
+          [
+            {
+              "text": "The second is turning that attention into meaningful experience."
+            }
+          ]
         ]
       },
       {
@@ -793,19 +864,21 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "Was this a real person?",
-            "bold": true
-          },
-          {
-            "text": "  "
-          },
-          {
-            "text": "Was the required action actually completed?",
-            "bold": true
-          }
+        "type": "list",
+        "ordered": true,
+        "items": [
+          [
+            {
+              "text": "Was this a real person?",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Was the required action actually completed?",
+              "bold": true
+            }
+          ]
         ]
       },
       {
@@ -944,7 +1017,7 @@
         "type": "paragraph",
         "content": [
           {
-            "text": "Register on the platform ",
+            "text": "Register on the platform",
             "href": "https://www.beeezo.com/brand"
           },
           {
@@ -1020,10 +1093,10 @@
           {
             "text": "Nielsen ",
             "bold": true,
-            "href": "https://www.linkedin.com/preload/"
+            "href": "https://www.nielsen.com/"
           },
           {
-            "text": " ratings."
+            "text": "ratings."
           }
         ]
       },
@@ -1077,18 +1150,18 @@
           {
             "text": "TiVo ",
             "bold": true,
-            "href": "https://www.linkedin.com/preload/"
+            "href": "https://www.tivo.com/"
           },
           {
-            "text": " let people record shows and skip commercials. "
+            "text": "let people record shows and skip commercials. "
           },
           {
             "text": "Netflix ",
             "bold": true,
-            "href": "https://www.linkedin.com/preload/"
+            "href": "https://www.netflix.com/"
           },
           {
-            "text": " (and many others) made content available whenever people wanted it."
+            "text": "(and many others) made content available whenever people wanted it."
           }
         ]
       },
@@ -1213,28 +1286,28 @@
         "type": "paragraph",
         "content": [
           {
-            "text": "That’s one of the most interesting signals underneath the recent strategic shifts at    "
+            "text": "That’s one of the most interesting signals underneath the recent strategic shifts at "
           },
           {
             "text": "Kering ",
-            "href": "https://fr.linkedin.com/company/kering"
+            "href": "https://www.kering.com/"
           },
           {
-            "text": "    and    "
+            "text": "and "
           },
           {
-            "text": "Gucci ",
-            "href": "https://it.linkedin.com/company/gucci"
+            "text": "Gucci",
+            "href": "https://www.gucci.com/"
           },
           {
-            "text": "   . Over the past several years, Gucci has experimented with gaming ecosystems, digital identity, avatar fashion, collectibles, and immersive online experiences through platforms like    "
+            "text": ". Over the past several years, Gucci has experimented with gaming ecosystems, digital identity, avatar fashion, collectibles, and immersive online experiences through platforms like "
           },
           {
             "text": "Roblox ",
-            "href": "https://www.linkedin.com/company/https-www-linkedin-com-company-roblox-jobs"
+            "href": "https://www.roblox.com/"
           },
           {
-            "text": "    and "
+            "text": "and "
           },
           {
             "text": "Zepeto",
@@ -1333,14 +1406,14 @@
         "type": "paragraph",
         "content": [
           {
-            "text": "At    "
+            "text": "At "
           },
           {
-            "text": "Beeezo ",
-            "href": "https://www.linkedin.com/company/beeezo"
+            "text": "Beeezo",
+            "href": "https://www.beeezo.com/"
           },
           {
-            "text": "    , we’ve been building around this exact idea: "
+            "text": ", we’ve been building around this exact idea: "
           },
           {
             "text": "verified participation instead of passive impressions",
@@ -1391,21 +1464,22 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "Wall Street Journal coverage of Kering and Gucci strategy ",
-            "bold": true,
-            "href": "https://www.wsj.com/business/earnings/gucci-owner-kering-posts-improving-sales-trends-ahead-of-new-strategy-launch-f370fbbd"
-          },
-          {
-            "text": "  "
-          },
-          {
-            "text": "Vogue: Inside Gucci’s Gaming Strategy ",
-            "bold": true,
-            "href": "https://www.vogue.com/article/inside-guccis-gaming-strategy"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "Wall Street Journal coverage of Kering and Gucci strategy",
+              "bold": true,
+              "href": "https://www.wsj.com/business/earnings/gucci-owner-kering-posts-improving-sales-trends-ahead-of-new-strategy-launch-f370fbbd"
+            }
+          ],
+          [
+            {
+              "text": "Vogue: Inside Gucci’s Gaming Strategy",
+              "bold": true,
+              "href": "https://www.vogue.com/article/inside-guccis-gaming-strategy"
+            }
+          ]
         ]
       }
     ]
@@ -1754,14 +1828,14 @@
         "type": "paragraph",
         "content": [
           {
-            "text": "This is the logic behind    "
+            "text": "This is the logic behind "
           },
           {
-            "text": "Beeezo ",
-            "href": "https://www.linkedin.com/company/beeezo"
+            "text": "Beeezo",
+            "href": "https://www.beeezo.com/"
           },
           {
-            "text": "   ."
+            "text": "."
           }
         ]
       },
@@ -1890,14 +1964,14 @@
         "type": "paragraph",
         "content": [
           {
-            "text": "One reason this matters to us is our alignment with    "
+            "text": "One reason this matters to us is our alignment with "
           },
           {
             "text": "Circle ",
-            "href": "https://www.linkedin.com/company/circle-internet-financial"
+            "href": "https://www.circle.com/"
           },
           {
-            "text": "    and the broader vision behind digital-dollar infrastructure: "
+            "text": "and the broader vision behind digital-dollar infrastructure: "
           },
           {
             "text": "expanding financial access, improving transparency, and making participation in the global economy more reachable for more people",
@@ -1990,7 +2064,7 @@
             "href": "https://www.circle.com/blog/beeezo-powers-an-equitable-digital-economy-with-usdc"
           },
           {
-            "text": " last year was not a pivot for us. It was confirmation that "
+            "text": "last year was not a pivot for us. It was confirmation that "
           },
           {
             "text": "this direction matters",
@@ -2004,7 +2078,7 @@
             "href": "https://www.circle.com/blog/announcing-the-first-circle-grant-recipients-in-2026"
           },
           {
-            "text": " by Circle this year to further build our platform using their innovative tools and technologies is another confirmation that "
+            "text": "by Circle this year to further build our platform using their innovative tools and technologies is another confirmation that "
           },
           {
             "text": "social impact matters",
@@ -2019,7 +2093,7 @@
         "type": "paragraph",
         "content": [
           {
-            "text": "Building the internet of the future means thinking beyond technology itself ",
+            "text": "Building the internet of the future means thinking beyond technology itself",
             "href": "https://www.circle.com/circle-impact"
           },
           {
@@ -2584,11 +2658,23 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "traffic  clicks  conversions"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "traffic"
+            }
+          ],
+          [
+            {
+              "text": "clicks"
+            }
+          ],
+          [
+            {
+              "text": "conversions"
+            }
+          ]
         ]
       },
       {
@@ -2649,11 +2735,23 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "fake traffic inflates visitors  synthetic engagement distorts conversion  low-quality users destabilize LTV"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "fake traffic inflates visitors"
+            }
+          ],
+          [
+            {
+              "text": "synthetic engagement distorts conversion"
+            }
+          ],
+          [
+            {
+              "text": "low-quality users destabilize LTV"
+            }
+          ]
         ]
       },
       {
@@ -2817,11 +2915,23 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "creatives  targeting  funnel steps"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "creatives"
+            }
+          ],
+          [
+            {
+              "text": "targeting"
+            }
+          ],
+          [
+            {
+              "text": "funnel steps"
+            }
+          ]
         ]
       },
       {
@@ -2861,11 +2971,23 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "bots generate traffic  AI simulates engagement  automation creates activity"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "bots generate traffic"
+            }
+          ],
+          [
+            {
+              "text": "AI simulates engagement"
+            }
+          ],
+          [
+            {
+              "text": "automation creates activity"
+            }
+          ]
         ]
       },
       {
@@ -2893,11 +3015,23 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "conversion rate becomes misleading  CPA becomes artificially efficient  LTV becomes unpredictable"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "conversion rate becomes misleading"
+            }
+          ],
+          [
+            {
+              "text": "CPA becomes artificially efficient"
+            }
+          ],
+          [
+            {
+              "text": "LTV becomes unpredictable"
+            }
+          ]
         ]
       },
       {
@@ -2999,11 +3133,23 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "real users  verified actions  positive unit economics"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "real users"
+            }
+          ],
+          [
+            {
+              "text": "verified actions"
+            }
+          ],
+          [
+            {
+              "text": "positive unit economics"
+            }
+          ]
         ]
       },
       {
@@ -3085,11 +3231,28 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "onboarding  product usage  learning  feedback"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "onboarding"
+            }
+          ],
+          [
+            {
+              "text": "product usage"
+            }
+          ],
+          [
+            {
+              "text": "learning"
+            }
+          ],
+          [
+            {
+              "text": "feedback"
+            }
+          ]
         ]
       },
       {
@@ -3101,11 +3264,23 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "tied to a real person  measurable  economically trackable"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "tied to a real person"
+            }
+          ],
+          [
+            {
+              "text": "measurable"
+            }
+          ],
+          [
+            {
+              "text": "economically trackable"
+            }
+          ]
         ]
       },
       {
@@ -3286,7 +3461,7 @@
             "text": "AI is accelerating content production. Automation is generating engagement. Programmatic systems can manufacture traffic at scale. At the same time, automated traffic has now surpassed human activity, accounting for 51% of all web traffic, according to "
           },
           {
-            "text": "Imperva’s 2025 Bad Bot Report.  ",
+            "text": "Imperva’s 2025 Bad Bot Report. ",
             "href": "https://cpl.thalesgroup.com/sites/default/files/content/campaigns/badbot/2025-Bad-Bot-Report.pdf"
           }
         ]
@@ -3363,7 +3538,7 @@
             "href": "https://en.wikipedia.org/wiki/Herbert_A._Simon"
           },
           {
-            "text": " argued decades ago that a wealth of information creates a poverty of attention. That idea looks even more relevant today."
+            "text": "argued decades ago that a wealth of information creates a poverty of attention. That idea looks even more relevant today."
           }
         ]
       },
@@ -3461,7 +3636,7 @@
             "href": "https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-attention-equation-winning-the-right-battles-for-consumer-attention"
           },
           {
-            "text": " found that a "
+            "text": "found that a "
           },
           {
             "text": "10% increase in average consumer focus across media is associated with a 17% increase in spending",
@@ -3643,7 +3818,7 @@
             "href": "https://www.emarketer.com/content/worldwide-ad-spending-forecast-2025"
           },
           {
-            "text": " forecast worldwide total media ad spending would exceed "
+            "text": "forecast worldwide total media ad spending would exceed "
           },
           {
             "text": "$1 trillion in 2025",
@@ -3897,11 +4072,38 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "product onboarding  install and activate  learn and complete  submit feedback  create content  verify follow-through"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "product onboarding"
+            }
+          ],
+          [
+            {
+              "text": "install and activate"
+            }
+          ],
+          [
+            {
+              "text": "learn and complete"
+            }
+          ],
+          [
+            {
+              "text": "submit feedback"
+            }
+          ],
+          [
+            {
+              "text": "create content"
+            }
+          ],
+          [
+            {
+              "text": "verify follow-through"
+            }
+          ]
         ]
       },
       {
@@ -4016,11 +4218,28 @@
         ]
       },
       {
-        "type": "paragraph",
-        "content": [
-          {
-            "text": "product onboarding  install and activate  learning interactions  feedback and content creation"
-          }
+        "type": "list",
+        "items": [
+          [
+            {
+              "text": "product onboarding"
+            }
+          ],
+          [
+            {
+              "text": "install and activate"
+            }
+          ],
+          [
+            {
+              "text": "learning interactions"
+            }
+          ],
+          [
+            {
+              "text": "feedback and content creation"
+            }
+          ]
         ]
       },
       {

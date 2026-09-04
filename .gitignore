@@ -4,6 +4,7 @@ coverage/
 .DS_Store
 .playwright-mcp/
 beeezo-home.png
+qa-*.png
 *.log
 .env
 .env.*
