@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import { SiteFooter } from './components/SiteFooter'
 import { SiteHeader } from './components/SiteHeader'
 import { BlogIndex } from './pages/BlogIndex'
+import { ArticleReader } from './pages/ArticleReader'
 import { NotFound } from './pages/NotFound'
 
 export function AppRoutes() {
@@ -13,10 +14,10 @@ export function AppRoutes() {
       <SiteHeader />
       <Routes>
         <Route path="/" element={<BlogIndex />} />
+        <Route path="/:slug" element={<ArticleReader />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <SiteFooter />
     </div>
   )
 }
-

@@ -1,6 +1,6 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import { describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { AppRoutes } from './App'
 
 function renderRoute(route: string) {
@@ -12,6 +12,10 @@ function renderRoute(route: string) {
 }
 
 describe('Beeezo blog routes', () => {
+  beforeEach(() => {
+    document.title = 'Beeezo Journal'
+  })
+
   it('shows all nine editions as local reader links on the archive', () => {
     renderRoute('/')
 
@@ -47,5 +51,44 @@ describe('Beeezo blog routes', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: 'Signal not found.' })).toBeVisible()
     expect(screen.getByRole('link', { name: 'Return to the journal' })).toHaveAttribute('href', '/')
+  })
+
+  it('opens a complete newsletter edition inside the Beeezo reader', () => {
+    renderRoute('/marketing-beyond-bots')
+
+    expect(screen.getByRole('heading', { level: 1, name: 'Marketing Beyond Bots' })).toBeVisible()
+    expect(screen.getByRole('heading', { level: 2, name: 'The Signal Breakdown' })).toBeVisible()
+    expect(
+      screen.getByText('The internet is filling with synthetic traffic.'),
+    ).toBeVisible()
+    expect(screen.getByRole('link', { name: 'Back to all ideas' })).toHaveAttribute('href', '/')
+    expect(screen.queryByRole('link', { name: /linkedin/i })).not.toBeInTheDocument()
+  })
+
+  it('updates page metadata and points readers to the next local edition', () => {
+    renderRoute('/marketing-beyond-bots')
+
+    expect(document.title).toBe('Marketing Beyond Bots — Beeezo Journal')
+    expect(document.querySelector('meta[name="description"]')).toHaveAttribute(
+      'content',
+      'Synthetic traffic is expanding. Human attention is not. The market will eventually learn to price the difference.',
+    )
+    expect(screen.getByRole('link', { name: /Read next: Action-Based Marketing/i })).toHaveAttribute(
+      'href',
+      '/action-based-marketing-starts-with-your-product',
+    )
+  })
+
+  it('confirms when the current Beeezo reader link has been copied', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText },
+    })
+    renderRoute('/marketing-beyond-bots')
+
+    fireEvent.click(screen.getByRole('button', { name: 'Copy article link' }))
+
+    expect(await screen.findByRole('button', { name: 'Link copied' })).toBeVisible()
   })
 })
