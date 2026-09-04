@@ -2,8 +2,9 @@ node_modules/
 dist/
 coverage/
 .DS_Store
+.playwright-mcp/
+beeezo-home.png
 *.log
 .env
 .env.*
 !.env.example
-
