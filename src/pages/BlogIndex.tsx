@@ -1,8 +1,20 @@
+import { useState } from 'react'
 import { ArticleCard } from '../components/ArticleCard'
-import { articles } from '../content/articles'
+import { NewsletterFilter } from '../components/NewsletterFilter'
+import type { NewsletterFilterValue } from '../components/NewsletterFilter'
+import { articles, newsletterById } from '../content/articles'
 
 export function BlogIndex() {
-  const [featuredArticle, ...archiveArticles] = articles
+  const [selectedNewsletter, setSelectedNewsletter] = useState<NewsletterFilterValue>('all')
+  const visibleArticles =
+    selectedNewsletter === 'all'
+      ? articles
+      : articles.filter((article) => article.newsletter === selectedNewsletter)
+  const [featuredArticle, ...archiveArticles] = visibleArticles
+  const archiveHeading =
+    selectedNewsletter === 'all'
+      ? 'All ideas'
+      : `More from ${newsletterById[selectedNewsletter].name}`
 
   return (
     <>
@@ -15,20 +27,25 @@ export function BlogIndex() {
         <div className="journal-hero__copy">
           <h1 id="journal-title">Ideas for the action economy.</h1>
           <p>
-            Notes on human attention, measurable participation, and what marketing becomes when
-            proof matters more than noise.
+            Practical ideas about marketing, customer attention, and building products people
+            choose to use.
           </p>
         </div>
-        <div className="journal-hero__status" aria-label={`${articles.length} published ideas`}>
-          <span>{String(articles.length).padStart(2, '0')}</span>
+        <div
+          className="journal-hero__status"
+          aria-label={`${visibleArticles.length} published ideas`}
+        >
+          <span>{String(visibleArticles.length).padStart(2, '0')}</span>
           <span>Published ideas</span>
         </div>
       </section>
 
       <main id="main-content" className="journal-main">
+        <NewsletterFilter selected={selectedNewsletter} onSelect={setSelectedNewsletter} />
+
         <section className="featured-section" aria-labelledby="latest-heading">
           <div className="section-heading">
-            <p className="eyebrow">Latest signal</p>
+            <p className="eyebrow">Latest Article</p>
             <h2 id="latest-heading" className="sr-only">
               Latest article
             </h2>
@@ -39,7 +56,7 @@ export function BlogIndex() {
         <section className="archive-section" aria-labelledby="archive-heading">
           <div className="section-heading section-heading--archive">
             <p className="eyebrow">From the journal</p>
-            <h2 id="archive-heading">All ideas</h2>
+            <h2 id="archive-heading">{archiveHeading}</h2>
           </div>
           <div className="article-grid">
             {archiveArticles.map((article) => (

@@ -6,7 +6,7 @@ Build a portable, production-quality blog page that Beeezo's senior developer ca
 
 ## Scope
 
-- Blog index with one featured story and a responsive archive grid.
+- Blog index with one featured story, newsletter filters, and a responsive archive grid.
 - Local article routes at `/blog/:slug`.
 - All twenty editions across Beeezo's two LinkedIn newsletter archives, including their original cover and inline images and full public article copy.
 - Beeezo-compatible global navigation and footer.
@@ -34,9 +34,11 @@ No replacement logo, substitute typeface, invented gradient, or additional brand
 
 ### Blog index
 
-The header mirrors the public website's navigation, marks Blog in orange, and keeps the production-style plain `SIGN IN` action. The opening is a content-height editorial frontispiece on white: an unruled `Beeezo / Journal` label, a compact publication count, the controlled statement "Ideas for the action economy," and a clean supporting column. It contains no hero illustration, decorative gradient, or orange path, and it yields quickly to the latest article. On phones the same content becomes a direct single-column introduction rather than reserving a viewport for artwork.
+The header mirrors the public website's navigation, marks Blog in orange, and keeps the production-style plain `SIGN IN` action. The opening is a content-height editorial frontispiece on white: an unruled `Beeezo / Journal` label, a compact publication count, the controlled statement "Ideas for the action economy," and the supporting copy "Practical ideas about marketing, customer attention, and building products people choose to use." It contains no hero illustration, decorative gradient, or orange path, and it yields quickly to the latest article. On phones the same content becomes a direct single-column introduction rather than reserving a viewport for artwork.
 
-The newest article is a wide featured story. Remaining editions use image-led cards with title, date, topic, reading time, and arrow affordance. Every card is a semantic link with visible keyboard focus. Article images remain the visual emphasis.
+A three-button control filters the index between All Articles, Smarter Marketing Solutions, and The Web3 Pulse. All Articles is selected by default. Each selection updates the publication count, promotes that collection's newest article under the visible "Latest Article" label, and limits the remaining archive cards to the same collection. The selected button exposes `aria-pressed="true"`.
+
+The newest matching article is a wide featured story. Remaining editions use image-led cards with title, date, topic, reading time, and arrow affordance. Every card is a semantic link with visible keyboard focus. Article images remain the visual emphasis.
 
 ### Article reader
 
@@ -83,7 +85,7 @@ The senior developer receives:
 
 ## Acceptance Criteria
 
-1. The archive shows all twenty genuine Beeezo newsletter editions with their original cover images.
+1. The archive shows all twenty genuine Beeezo newsletter editions by default and filters to fifteen Smarter Marketing Solutions or five Web3 Pulse editions while promoting the newest matching story.
 2. Every article card opens the matching local reader route.
 3. Every reader keeps the full local reading experience and ends with verified links to its original LinkedIn edition and matching newsletter archive.
 4. Direct navigation to an article works with the configured basename.

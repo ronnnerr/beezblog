@@ -36,6 +36,78 @@ describe('Beeezo blog routes', () => {
     )
   })
 
+  it('presents the three newsletter filters with the requested editorial copy', () => {
+    renderRoute('/')
+
+    expect(screen.getByText('Latest Article')).toBeVisible()
+    expect(
+      screen.getByText(
+        'Practical ideas about marketing, customer attention, and building products people choose to use.',
+      ),
+    ).toBeVisible()
+
+    expect(screen.getByRole('button', { name: 'All Articles' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    )
+    expect(screen.getByRole('button', { name: 'Smarter Marketing Solutions' })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    )
+    expect(screen.getByRole('button', { name: 'The Web3 Pulse' })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    )
+  })
+
+  it('filters to five Web3 articles and promotes the newest Web3 edition', () => {
+    renderRoute('/')
+
+    fireEvent.click(screen.getByRole('button', { name: 'The Web3 Pulse' }))
+
+    const articleLinks = screen.getAllByRole('link', { name: /^Read:/ })
+    expect(articleLinks).toHaveLength(5)
+    expect(articleLinks[0]).toHaveAttribute(
+      'href',
+      '/the-money-game-navigating-web3s-evolving-funding-landscape',
+    )
+    expect(screen.getByLabelText('5 published ideas')).toBeVisible()
+    expect(screen.getByRole('button', { name: 'The Web3 Pulse' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    )
+    expect(screen.getByRole('button', { name: 'All Articles' })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    )
+  })
+
+  it('filters to fifteen marketing articles and restores all twenty articles', () => {
+    renderRoute('/')
+
+    fireEvent.click(screen.getByRole('button', { name: 'Smarter Marketing Solutions' }))
+
+    expect(screen.getAllByRole('link', { name: /^Read:/ })).toHaveLength(15)
+    expect(screen.getByLabelText('15 published ideas')).toBeVisible()
+    expect(screen.getByRole('button', { name: 'Smarter Marketing Solutions' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    )
+
+    fireEvent.click(screen.getByRole('button', { name: 'All Articles' }))
+
+    expect(screen.getAllByRole('link', { name: /^Read:/ })).toHaveLength(20)
+    expect(screen.getByLabelText('20 published ideas')).toBeVisible()
+    expect(screen.getByRole('button', { name: 'All Articles' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    )
+    expect(screen.getByRole('button', { name: 'Smarter Marketing Solutions' })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    )
+  })
+
   it('uses the original cover art for the featured edition', () => {
     renderRoute('/')
 

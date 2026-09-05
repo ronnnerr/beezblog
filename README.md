@@ -6,7 +6,7 @@ A portable Beeezo blog index and long-form reader built from the company's publi
 
 - All twenty editions across Beeezo's two verified LinkedIn newsletter archives.
 - Thirty-seven original assets imported for the eleven newly recovered editions: eleven covers and twenty-six inline images.
-- A responsive archive with a featured latest story.
+- A responsive archive with a featured latest story and filters for both newsletter series.
 - An image-free editorial frontispiece that distinguishes the journal from Beeezo's illustrated homepage.
 - Local article readers at `/blog/:slug`.
 - A verified LinkedIn endcap on every reader with the matching edition and newsletter archive.
