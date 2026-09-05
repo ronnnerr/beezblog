@@ -47,4 +47,3 @@ export function ArticleCard({ article, featured = false }: ArticleCardProps) {
     </article>
   )
 }
-

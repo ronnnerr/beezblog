@@ -15,4 +15,3 @@ export function BrandLogo({ tone = 'dark' }: BrandLogoProps) {
     />
   )
 }
-

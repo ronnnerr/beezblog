@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { BrandLogo } from './BrandLogo'
 
 const primaryLinks = [
@@ -16,9 +16,9 @@ function NavigationLinks() {
           {item.label}
         </a>
       ))}
-      <Link to="/" aria-current="page">
+      <NavLink to="/" end>
         Blog
-      </Link>
+      </NavLink>
       {primaryLinks.slice(3).map((item) => (
         <a key={item.label} href={item.href}>
           {item.label}
@@ -57,4 +57,3 @@ export function SiteHeader() {
     </header>
   )
 }
-

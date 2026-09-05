@@ -51,6 +51,9 @@ describe('Beeezo blog routes', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: 'Signal not found.' })).toBeVisible()
     expect(screen.getByRole('link', { name: 'Return to the journal' })).toHaveAttribute('href', '/')
+    for (const link of screen.getAllByRole('link', { name: 'Blog' })) {
+      expect(link).not.toHaveAttribute('aria-current')
+    }
   })
 
   it('opens a complete newsletter edition inside the Beeezo reader', () => {
