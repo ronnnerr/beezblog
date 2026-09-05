@@ -1,0 +1,73 @@
+.article-linkedin-cta {
+  display: grid;
+  grid-column: 2;
+  grid-template-columns: minmax(9rem, 0.7fr) minmax(18rem, 1.3fr);
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+  align-items: end;
+  margin-top: clamp(3.5rem, 7vw, 6rem);
+  padding-top: 1.5rem;
+  border-top: 0.25rem solid var(--orange);
+}
+
+.article-linkedin-cta__eyebrow {
+  color: var(--utility);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.article-linkedin-cta__series {
+  margin-top: 0.65rem;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+.article-linkedin-cta__actions {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.article-linkedin-cta__link {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.article-linkedin-cta__link--primary {
+  padding: 0.95rem 1rem;
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.article-linkedin-cta__link--primary .arrow-icon {
+  color: var(--orange);
+}
+
+.article-linkedin-cta__link--edition {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.article-linkedin-cta__link:hover .arrow-icon {
+  transform: rotate(-45deg) translateX(0.2rem);
+}
+
+@media (max-width: 820px) {
+  .article-linkedin-cta {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .article-linkedin-cta {
+    grid-template-columns: 1fr;
+  }
+}

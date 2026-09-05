@@ -16,7 +16,7 @@ describe('Beeezo blog routes', () => {
     document.title = 'Beeezo Journal'
   })
 
-  it('shows all nine editions as local reader links on the archive', () => {
+  it('shows all twenty newsletter editions as local reader links on the archive', () => {
     renderRoute('/')
 
     expect(
@@ -29,7 +29,7 @@ describe('Beeezo blog routes', () => {
     }
 
     const articleLinks = screen.getAllByRole('link', { name: /^Read:/ })
-    expect(articleLinks).toHaveLength(9)
+    expect(articleLinks).toHaveLength(20)
     expect(articleLinks[0]).toHaveAttribute(
       'href',
       '/action-based-marketing-starts-with-your-product',
@@ -44,6 +44,23 @@ describe('Beeezo blog routes', () => {
         name: 'UX sketches and a sticky note reading User Experience.',
       }),
     ).toHaveAttribute('src', '/images/articles/action-based-marketing.png')
+  })
+
+  it('opens the journal with editorial text instead of decorative hero artwork', () => {
+    const { container } = renderRoute('/')
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Ideas for the action economy.' }),
+    ).toBeVisible()
+    expect(container.querySelector('.journal-hero picture')).not.toBeInTheDocument()
+  })
+
+  it('matches the landing-page sign-in label', () => {
+    renderRoute('/')
+
+    const signInLinks = screen.getAllByRole('link', { name: 'SIGN IN' })
+    expect(signInLinks).toHaveLength(2)
+    expect(signInLinks[0]).toBeVisible()
   })
 
   it('shows a useful branded fallback for an unknown route', () => {
@@ -65,7 +82,17 @@ describe('Beeezo blog routes', () => {
       screen.getByText('The internet is filling with synthetic traffic.'),
     ).toBeVisible()
     expect(screen.getByRole('link', { name: 'Back to all ideas' })).toHaveAttribute('href', '/')
-    expect(screen.queryByRole('link', { name: /linkedin/i })).not.toBeInTheDocument()
+    expect(
+      screen.getByRole('link', { name: 'Read this edition on LinkedIn' }),
+    ).toHaveAttribute('href', 'https://www.linkedin.com/pulse/marketing-beyond-bots-beeezo-zueye')
+  })
+
+  it('keeps Blog current while reading a verified journal article', () => {
+    renderRoute('/marketing-beyond-bots')
+
+    for (const link of screen.getAllByRole('link', { name: 'Blog' })) {
+      expect(link).toHaveAttribute('aria-current', 'page')
+    }
   })
 
   it('preserves newsletter bullet lists in the Beeezo reader', () => {
@@ -85,6 +112,30 @@ describe('Beeezo blog routes', () => {
     ).toBeVisible()
   })
 
+  it('keeps original inline newsletter artwork inside its local reader', () => {
+    renderRoute('/performance-marketing-hitting-a-structural-wall')
+
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: 'Performance Marketing Is Hitting a Structural Wall',
+      }),
+    ).toBeVisible()
+    expect(
+      screen.getByRole('img', { name: /90-day competitive LinkedIn engagement benchmark/i }),
+    ).toBeVisible()
+  })
+
+  it('preserves cited passages from The Web3 Pulse as quotations', () => {
+    renderRoute('/hidden-giants-the-blockchain-ecosystems-you-may-have-missed')
+
+    expect(
+      screen
+        .getByText(/NEAR Protocol has focused on strengthening its technical infrastructure/)
+        .closest('blockquote'),
+    ).toBeVisible()
+  })
+
   it('updates page metadata and points readers to the next local edition', () => {
     renderRoute('/marketing-beyond-bots')
 
@@ -93,9 +144,9 @@ describe('Beeezo blog routes', () => {
       'content',
       'Synthetic traffic is expanding. Human attention is not. The market will eventually learn to price the difference.',
     )
-    expect(screen.getByRole('link', { name: /Read next: Action-Based Marketing/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /Read next: The Quiet Collapse/i })).toHaveAttribute(
       'href',
-      '/action-based-marketing-starts-with-your-product',
+      '/the-quiet-collapse-of-the-lead-funnel',
     )
   })
 
@@ -123,12 +174,12 @@ describe('Beeezo blog routes', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Copy article link' }))
     expect(await screen.findByRole('button', { name: 'Link copied' })).toBeVisible()
-    fireEvent.click(screen.getByRole('link', { name: /Read next: Action-Based Marketing/i }))
+    fireEvent.click(screen.getByRole('link', { name: /Read next: The Quiet Collapse/i }))
 
     expect(
       await screen.findByRole('heading', {
         level: 1,
-        name: 'Action-Based Marketing Starts With Your Product',
+        name: 'The Quiet Collapse of the Lead Funnel',
       }),
     ).toBeVisible()
     expect(screen.getByRole('button', { name: 'Copy article link' })).toBeVisible()

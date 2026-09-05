@@ -2,9 +2,10 @@ import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowIcon } from '../components/ArrowIcon'
 import { ArticleBody } from '../components/ArticleBody'
+import { ArticleLinkedInCta } from '../components/ArticleLinkedInCta'
 import { CopyLinkButton } from '../components/CopyLinkButton'
 import { ReadingProgress } from '../components/ReadingProgress'
-import { articles, getArticleBySlug, getNextArticle } from '../content/articles'
+import { articles, getArticleBySlug, getNextArticle, newsletterById } from '../content/articles'
 import { assetUrl } from '../lib/assetUrl'
 import { NotFound } from './NotFound'
 
@@ -101,6 +102,10 @@ export function ArticleReader() {
             <CopyLinkButton key={article.slug} />
           </aside>
           <ArticleBody blocks={article.blocks} />
+          <ArticleLinkedInCta
+            newsletter={newsletterById[article.newsletter]}
+            sourceUrl={article.sourceUrl}
+          />
         </div>
       </article>
 

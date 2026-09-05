@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a portable Beeezo-branded blog index and complete on-site article readers from nine real newsletter editions.
+**Goal:** Build a portable Beeezo-branded blog index and complete on-site article readers from all twenty real editions across Beeezo's two LinkedIn newsletters.
 
 **Architecture:** A Vite React SPA owns the `/blog/` basename and renders an index or article reader from typed local content. Original cover art, the production wordmark, and Onest fonts ship locally, eliminating LinkedIn and font-CDN runtime dependencies.
 
@@ -32,19 +32,19 @@
 **Interfaces:**
 - Produces: `Article`, `ArticleBlock`, `articles`, `getArticleBySlug(slug)`, and `getNextArticle(slug)`.
 
-- [ ] **Step 1: Add the test runner configuration and write failing content-contract tests**
+- [x] **Step 1: Add the test runner configuration and write failing content-contract tests**
 
 ```ts
-expect(articles).toHaveLength(9)
-expect(new Set(articles.map((article) => article.slug)).size).toBe(9)
+expect(articles).toHaveLength(20)
+expect(new Set(articles.map((article) => article.slug)).size).toBe(20)
 expect(getArticleBySlug('marketing-beyond-bots')?.title).toBe('Marketing Beyond Bots')
 expect(getArticleBySlug('missing')).toBeUndefined()
 ```
 
-- [ ] **Step 2: Run `npm test -- src/content/articles.test.ts` and confirm failure because the content module does not exist**
-- [ ] **Step 3: Add the typed content model, mechanically import the public LinkedIn article blocks, and document source URLs**
-- [ ] **Step 4: Run the content test and confirm all content-contract assertions pass**
-- [ ] **Step 5: Commit the independently testable content foundation**
+- [x] **Step 2: Run `npm test -- src/content/articles.test.ts` and confirm failure because the content module does not exist**
+- [x] **Step 3: Add the typed content model, mechanically import the public LinkedIn article blocks, and document source URLs**
+- [x] **Step 4: Run the content test and confirm all content-contract assertions pass**
+- [x] **Step 5: Commit the independently testable content foundation**
 
 ### Task 2: Blog archive and routing
 
@@ -57,30 +57,30 @@ expect(getArticleBySlug('missing')).toBeUndefined()
 - Consumes: `articles` and the content types from Task 1.
 - Produces: `AppRoutes`, archive card links, and fallback route behavior.
 
-- [ ] **Step 1: Write failing route tests for the archive, all nine local links, active Blog navigation, and an unknown route**
+- [x] **Step 1: Write failing route tests for the archive, all twenty local links, active Blog navigation, and an unknown route**
 
 ```tsx
 render(<MemoryRouter initialEntries={['/']}><AppRoutes /></MemoryRouter>)
 expect(screen.getByRole('heading', { name: /ideas for the action economy/i })).toBeVisible()
-expect(screen.getAllByRole('link', { name: /read:/i })).toHaveLength(9)
+expect(screen.getAllByRole('link', { name: /read:/i })).toHaveLength(20)
 ```
 
-- [ ] **Step 2: Run `npm test -- src/App.test.tsx` and confirm failure because the application routes do not exist**
-- [ ] **Step 3: Implement the shared shell, archive layout, semantic card links, and branded not-found view**
-- [ ] **Step 4: Run the route tests and confirm the archive and fallback behavior pass**
-- [ ] **Step 5: Commit the independently testable archive experience**
+- [x] **Step 2: Run `npm test -- src/App.test.tsx` and confirm failure because the application routes do not exist**
+- [x] **Step 3: Implement the shared shell, archive layout, semantic card links, and branded not-found view**
+- [x] **Step 4: Run the route tests and confirm the archive and fallback behavior pass**
+- [x] **Step 5: Commit the independently testable archive experience**
 
 ### Task 3: Complete article reader
 
 **Files:**
-- Create: `src/pages/ArticleReader.tsx`, `src/components/ArticleBody.tsx`, `src/components/ReadingProgress.tsx`, `src/components/CopyLinkButton.tsx`
+- Create: `src/pages/ArticleReader.tsx`, `src/components/ArticleBody.tsx`, `src/components/ReadingProgress.tsx`, `src/components/CopyLinkButton.tsx`, `src/components/ArticleLinkedInCta.tsx`
 - Modify: `src/App.tsx`, `src/App.test.tsx`
 
 **Interfaces:**
 - Consumes: `getArticleBySlug`, `getNextArticle`, and safe `ArticleBlock` values.
-- Produces: local readers, body rendering, next-story navigation, reading progress, and copy-link feedback.
+- Produces: local readers, body rendering, next-story navigation, reading progress, copy-link feedback, and verified LinkedIn edition/newsletter actions.
 
-- [ ] **Step 1: Write failing tests for a valid article, full body, next article link, unknown slug, and copy-link state**
+- [x] **Step 1: Write failing tests for a valid article, full body, next article link, unknown slug, copy-link state, and verified LinkedIn actions**
 
 ```tsx
 render(<MemoryRouter initialEntries={['/marketing-beyond-bots']}><AppRoutes /></MemoryRouter>)
@@ -89,10 +89,10 @@ expect(screen.getByText('The Signal Breakdown')).toBeVisible()
 expect(screen.getByRole('link', { name: /read next/i })).toHaveAttribute('href')
 ```
 
-- [ ] **Step 2: Run the focused test and confirm it fails because the reader components do not exist**
-- [ ] **Step 3: Implement the reader, safe block renderer, progress behavior, metadata updates, and copy-link control**
-- [ ] **Step 4: Run all tests and confirm reader behavior passes without console warnings**
-- [ ] **Step 5: Commit the independently testable reader experience**
+- [x] **Step 2: Run the focused test and confirm it fails because the reader components do not exist**
+- [x] **Step 3: Implement the reader, safe block renderer, progress behavior, metadata updates, copy-link control, and LinkedIn endcap**
+- [x] **Step 4: Run all tests and confirm reader behavior passes without console warnings**
+- [x] **Step 5: Commit the independently testable reader experience**
 
 ### Task 4: Brand styling, handoff documentation, and proof
 
@@ -104,8 +104,8 @@ expect(screen.getByRole('link', { name: /read next/i })).toHaveAttribute('href')
 - Consumes: the application shell and verified assets.
 - Produces: responsive, accessible visual implementation and integration instructions.
 
-- [ ] **Step 1: Implement the two-pass design system from the spec, including the signal-line interaction and responsive reader**
-- [ ] **Step 2: Document local development, build, `/blog/` mounting, history fallback, asset ownership, and article updates**
-- [ ] **Step 3: Run `npm test`, `npm run typecheck`, `npm run lint`, and `npm run build` and require zero failures**
-- [ ] **Step 4: Run desktop and mobile browser checks for archive and reader routes, inspect console output, and save screenshots**
-- [ ] **Step 5: Request code review, resolve all critical and important findings, repeat the full verification suite, and commit**
+- [x] **Step 1: Implement the two-pass design system from the spec, including the image-free editorial frontispiece, card interactions, and responsive reader**
+- [x] **Step 2: Document local development, build, `/blog/` mounting, history fallback, asset ownership, and article updates**
+- [x] **Step 3: Run `npm test`, `npm run typecheck`, `npm run lint`, and `npm run build` and require zero failures**
+- [x] **Step 4: Run desktop and mobile browser checks for archive and reader routes, inspect console output, and save screenshots**
+- [x] **Step 5: Request code review, resolve all critical and important findings, repeat the full verification suite, and commit**

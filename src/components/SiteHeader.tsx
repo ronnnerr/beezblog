@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { getArticleBySlug } from '../content/articles'
 import { BrandLogo } from './BrandLogo'
 
 const primaryLinks = [
@@ -8,7 +9,7 @@ const primaryLinks = [
   { label: 'Contact Us', href: 'https://www.beeezo.com/contact-us' },
 ]
 
-function NavigationLinks() {
+function NavigationLinks({ isBlogRoute }: { isBlogRoute: boolean }) {
   return (
     <>
       {primaryLinks.slice(0, 3).map((item) => (
@@ -16,9 +17,9 @@ function NavigationLinks() {
           {item.label}
         </a>
       ))}
-      <NavLink to="/" end>
+      <Link to="/" aria-current={isBlogRoute ? 'page' : undefined}>
         Blog
-      </NavLink>
+      </Link>
       {primaryLinks.slice(3).map((item) => (
         <a key={item.label} href={item.href}>
           {item.label}
@@ -29,6 +30,10 @@ function NavigationLinks() {
 }
 
 export function SiteHeader() {
+  const { pathname } = useLocation()
+  const slug = pathname.replace(/^\/+|\/+$/g, '')
+  const isBlogRoute = pathname === '/' || (!slug.includes('/') && Boolean(getArticleBySlug(slug)))
+
   return (
     <header className="site-header">
       <a className="site-header__brand" href="https://www.beeezo.com/" aria-label="Beeezo home">
@@ -36,11 +41,11 @@ export function SiteHeader() {
       </a>
 
       <nav className="site-header__nav" aria-label="Primary navigation">
-        <NavigationLinks />
+        <NavigationLinks isBlogRoute={isBlogRoute} />
       </nav>
 
       <a className="site-header__sign-in" href="https://www.beeezo.com/sign-in">
-        Sign in
+        SIGN IN
       </a>
 
       <details className="mobile-menu">
@@ -50,8 +55,8 @@ export function SiteHeader() {
           <span />
         </summary>
         <nav aria-label="Mobile navigation">
-          <NavigationLinks />
-          <a href="https://www.beeezo.com/sign-in">Sign in</a>
+          <NavigationLinks isBlogRoute={isBlogRoute} />
+          <a href="https://www.beeezo.com/sign-in">SIGN IN</a>
         </nav>
       </details>
     </header>
