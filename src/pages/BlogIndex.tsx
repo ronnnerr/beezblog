@@ -33,10 +33,13 @@ export function BlogIndex() {
         </div>
         <div
           className="journal-hero__status"
-          aria-label={`${visibleArticles.length} published ideas`}
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
         >
-          <span>{String(visibleArticles.length).padStart(2, '0')}</span>
-          <span>Published ideas</span>
+          <span aria-hidden="true">{String(visibleArticles.length).padStart(2, '0')}</span>
+          <span aria-hidden="true">Published ideas</span>
+          <span className="sr-only">{visibleArticles.length} published ideas shown.</span>
         </div>
       </section>
 
@@ -45,9 +48,8 @@ export function BlogIndex() {
 
         <section className="featured-section" aria-labelledby="latest-heading">
           <div className="section-heading">
-            <p className="eyebrow">Latest Article</p>
-            <h2 id="latest-heading" className="sr-only">
-              Latest article
+            <h2 id="latest-heading" className="eyebrow">
+              Latest Article
             </h2>
           </div>
           <ArticleCard article={featuredArticle} featured />

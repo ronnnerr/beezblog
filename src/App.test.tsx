@@ -39,7 +39,7 @@ describe('Beeezo blog routes', () => {
   it('presents the three newsletter filters with the requested editorial copy', () => {
     renderRoute('/')
 
-    expect(screen.getByText('Latest Article')).toBeVisible()
+    expect(screen.getByRole('heading', { level: 2, name: 'Latest Article' })).toBeVisible()
     expect(
       screen.getByText(
         'Practical ideas about marketing, customer attention, and building products people choose to use.',
@@ -58,6 +58,11 @@ describe('Beeezo blog routes', () => {
       'aria-pressed',
       'false',
     )
+
+    const articleStatus = screen.getByRole('status')
+    expect(articleStatus).toHaveAttribute('aria-live', 'polite')
+    expect(articleStatus).toHaveAttribute('aria-atomic', 'true')
+    expect(articleStatus).toHaveTextContent('20 published ideas shown.')
   })
 
   it('filters to five Web3 articles and promotes the newest Web3 edition', () => {
@@ -71,7 +76,8 @@ describe('Beeezo blog routes', () => {
       'href',
       '/the-money-game-navigating-web3s-evolving-funding-landscape',
     )
-    expect(screen.getByLabelText('5 published ideas')).toBeVisible()
+    expect(screen.getByRole('status')).toHaveTextContent('5 published ideas shown.')
+    expect(screen.getByRole('heading', { level: 2, name: 'More from The Web3 Pulse' })).toBeVisible()
     expect(screen.getByRole('button', { name: 'The Web3 Pulse' })).toHaveAttribute(
       'aria-pressed',
       'true',
@@ -88,7 +94,10 @@ describe('Beeezo blog routes', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Smarter Marketing Solutions' }))
 
     expect(screen.getAllByRole('link', { name: /^Read:/ })).toHaveLength(15)
-    expect(screen.getByLabelText('15 published ideas')).toBeVisible()
+    expect(screen.getByRole('status')).toHaveTextContent('15 published ideas shown.')
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'More from Smarter Marketing Solutions' }),
+    ).toBeVisible()
     expect(screen.getByRole('button', { name: 'Smarter Marketing Solutions' })).toHaveAttribute(
       'aria-pressed',
       'true',
@@ -97,7 +106,8 @@ describe('Beeezo blog routes', () => {
     fireEvent.click(screen.getByRole('button', { name: 'All Articles' }))
 
     expect(screen.getAllByRole('link', { name: /^Read:/ })).toHaveLength(20)
-    expect(screen.getByLabelText('20 published ideas')).toBeVisible()
+    expect(screen.getByRole('status')).toHaveTextContent('20 published ideas shown.')
+    expect(screen.getByRole('heading', { level: 2, name: 'All ideas' })).toBeVisible()
     expect(screen.getByRole('button', { name: 'All Articles' })).toHaveAttribute(
       'aria-pressed',
       'true',
