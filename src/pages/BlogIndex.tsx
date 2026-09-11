@@ -13,7 +13,7 @@ export function BlogIndex() {
   const [featuredArticle, ...archiveArticles] = visibleArticles
   const archiveHeading =
     selectedNewsletter === 'all'
-      ? 'All ideas'
+      ? 'All articles'
       : `More from ${newsletterById[selectedNewsletter].name}`
 
   return (
@@ -25,10 +25,10 @@ export function BlogIndex() {
           <span>Journal</span>
         </div>
         <div className="journal-hero__copy">
-          <h1 id="journal-title">Ideas for the action economy.</h1>
+          <h1 id="journal-title">What’s changing in marketing and digital finance.</h1>
           <p>
-            Practical ideas about marketing, customer attention, and building products people
-            choose to use.
+            Beeezo and Sergey Kiklevich write about human attention, customer trust, stablecoins,
+            tokenization, and the financial rails moving on-chain.
           </p>
         </div>
         <div
@@ -38,8 +38,8 @@ export function BlogIndex() {
           aria-atomic="true"
         >
           <span aria-hidden="true">{String(visibleArticles.length).padStart(2, '0')}</span>
-          <span aria-hidden="true">Published ideas</span>
-          <span className="sr-only">{visibleArticles.length} published ideas shown.</span>
+          <span aria-hidden="true">Published articles</span>
+          <span className="sr-only">{visibleArticles.length} published articles shown.</span>
         </div>
       </section>
 

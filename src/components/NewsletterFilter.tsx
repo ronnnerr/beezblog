@@ -15,7 +15,10 @@ const filterOptions: Array<{ label: string; value: NewsletterFilterValue }> = [
     label: newsletterById['smarter-marketing-solutions'].name,
     value: 'smarter-marketing-solutions',
   },
-  { label: newsletterById['the-web3-pulse'].name, value: 'the-web3-pulse' },
+  {
+    label: newsletterById['weekly-blockchain-digest'].name,
+    value: 'weekly-blockchain-digest',
+  },
 ]
 
 export function NewsletterFilter({ selected, onSelect }: NewsletterFilterProps) {

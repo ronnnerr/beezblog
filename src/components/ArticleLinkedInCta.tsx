@@ -11,7 +11,7 @@ export function ArticleLinkedInCta({ newsletter, sourceUrl }: ArticleLinkedInCta
   return (
     <aside className="article-linkedin-cta" aria-label="Continue on LinkedIn">
       <div className="article-linkedin-cta__intro">
-        <p className="article-linkedin-cta__eyebrow">Beeezo on LinkedIn</p>
+        <p className="article-linkedin-cta__eyebrow">Continue on LinkedIn</p>
         <p className="article-linkedin-cta__series">{newsletter.name}</p>
       </div>
 

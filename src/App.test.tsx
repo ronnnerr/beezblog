@@ -16,11 +16,14 @@ describe('Beeezo blog routes', () => {
     document.title = 'Beeezo Journal'
   })
 
-  it('shows all twenty newsletter editions as local reader links on the archive', () => {
+  it('shows every newsletter edition as a local reader link on the archive', () => {
     renderRoute('/')
 
     expect(
-      screen.getByRole('heading', { level: 1, name: 'Ideas for the action economy.' }),
+      screen.getByRole('heading', {
+        level: 1,
+        name: 'What’s changing in marketing and digital finance.',
+      }),
     ).toBeVisible()
     const blogLinks = screen.getAllByRole('link', { name: 'Blog' })
     expect(blogLinks).toHaveLength(2)
@@ -29,10 +32,10 @@ describe('Beeezo blog routes', () => {
     }
 
     const articleLinks = screen.getAllByRole('link', { name: /^Read:/ })
-    expect(articleLinks).toHaveLength(20)
+    expect(articleLinks).toHaveLength(79)
     expect(articleLinks[0]).toHaveAttribute(
       'href',
-      '/action-based-marketing-starts-with-your-product',
+      '/pick-a-side-there-are-no-sides/',
     )
   })
 
@@ -42,7 +45,7 @@ describe('Beeezo blog routes', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'Latest Article' })).toBeVisible()
     expect(
       screen.getByText(
-        'Practical ideas about marketing, customer attention, and building products people choose to use.',
+        'Beeezo and Sergey Kiklevich write about human attention, customer trust, stablecoins, tokenization, and the financial rails moving on-chain.',
       ),
     ).toBeVisible()
 
@@ -54,7 +57,7 @@ describe('Beeezo blog routes', () => {
       'aria-pressed',
       'false',
     )
-    expect(screen.getByRole('button', { name: 'The Web3 Pulse' })).toHaveAttribute(
+    expect(screen.getByRole('button', { name: 'Weekly Blockchain Digest' })).toHaveAttribute(
       'aria-pressed',
       'false',
     )
@@ -62,23 +65,25 @@ describe('Beeezo blog routes', () => {
     const articleStatus = screen.getByRole('status')
     expect(articleStatus).toHaveAttribute('aria-live', 'polite')
     expect(articleStatus).toHaveAttribute('aria-atomic', 'true')
-    expect(articleStatus).toHaveTextContent('20 published ideas shown.')
+    expect(articleStatus).toHaveTextContent('79 published articles shown.')
   })
 
-  it('filters to five Web3 articles and promotes the newest Web3 edition', () => {
+  it('filters to all sixty-four Weekly Blockchain Digest editions and promotes the latest one', () => {
     renderRoute('/')
 
-    fireEvent.click(screen.getByRole('button', { name: 'The Web3 Pulse' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Weekly Blockchain Digest' }))
 
     const articleLinks = screen.getAllByRole('link', { name: /^Read:/ })
-    expect(articleLinks).toHaveLength(5)
+    expect(articleLinks).toHaveLength(64)
     expect(articleLinks[0]).toHaveAttribute(
       'href',
-      '/the-money-game-navigating-web3s-evolving-funding-landscape',
+      '/pick-a-side-there-are-no-sides/',
     )
-    expect(screen.getByRole('status')).toHaveTextContent('5 published ideas shown.')
-    expect(screen.getByRole('heading', { level: 2, name: 'More from The Web3 Pulse' })).toBeVisible()
-    expect(screen.getByRole('button', { name: 'The Web3 Pulse' })).toHaveAttribute(
+    expect(screen.getByRole('status')).toHaveTextContent('64 published articles shown.')
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'More from Weekly Blockchain Digest' }),
+    ).toBeVisible()
+    expect(screen.getByRole('button', { name: 'Weekly Blockchain Digest' })).toHaveAttribute(
       'aria-pressed',
       'true',
     )
@@ -88,13 +93,13 @@ describe('Beeezo blog routes', () => {
     )
   })
 
-  it('filters to fifteen marketing articles and restores all twenty articles', () => {
+  it('filters to fifteen marketing articles and restores the complete archive', () => {
     renderRoute('/')
 
     fireEvent.click(screen.getByRole('button', { name: 'Smarter Marketing Solutions' }))
 
     expect(screen.getAllByRole('link', { name: /^Read:/ })).toHaveLength(15)
-    expect(screen.getByRole('status')).toHaveTextContent('15 published ideas shown.')
+    expect(screen.getByRole('status')).toHaveTextContent('15 published articles shown.')
     expect(
       screen.getByRole('heading', { level: 2, name: 'More from Smarter Marketing Solutions' }),
     ).toBeVisible()
@@ -105,9 +110,9 @@ describe('Beeezo blog routes', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'All Articles' }))
 
-    expect(screen.getAllByRole('link', { name: /^Read:/ })).toHaveLength(20)
-    expect(screen.getByRole('status')).toHaveTextContent('20 published ideas shown.')
-    expect(screen.getByRole('heading', { level: 2, name: 'All ideas' })).toBeVisible()
+    expect(screen.getAllByRole('link', { name: /^Read:/ })).toHaveLength(79)
+    expect(screen.getByRole('status')).toHaveTextContent('79 published articles shown.')
+    expect(screen.getByRole('heading', { level: 2, name: 'All articles' })).toBeVisible()
     expect(screen.getByRole('button', { name: 'All Articles' })).toHaveAttribute(
       'aria-pressed',
       'true',
@@ -123,16 +128,19 @@ describe('Beeezo blog routes', () => {
 
     expect(
       screen.getByRole('img', {
-        name: 'UX sketches and a sticky note reading User Experience.',
+        name: 'Weekly Blockchain Digest cover for Pick a Side? There Are No Sides.',
       }),
-    ).toHaveAttribute('src', '/images/articles/action-based-marketing.png')
+    ).toHaveAttribute('src', '/images/articles/pick-a-side-there-are-no-sides.png')
   })
 
   it('opens the journal with editorial text instead of decorative hero artwork', () => {
     const { container } = renderRoute('/')
 
     expect(
-      screen.getByRole('heading', { level: 1, name: 'Ideas for the action economy.' }),
+      screen.getByRole('heading', {
+        level: 1,
+        name: 'What’s changing in marketing and digital finance.',
+      }),
     ).toBeVisible()
     expect(container.querySelector('.journal-hero picture')).not.toBeInTheDocument()
   })
@@ -148,7 +156,7 @@ describe('Beeezo blog routes', () => {
   it('shows a useful branded fallback for an unknown route', () => {
     renderRoute('/this-route-does-not-exist')
 
-    expect(screen.getByRole('heading', { level: 1, name: 'Signal not found.' })).toBeVisible()
+    expect(screen.getByRole('heading', { level: 1, name: 'Article not found.' })).toBeVisible()
     expect(screen.getByRole('link', { name: 'Return to the journal' })).toHaveAttribute('href', '/')
     for (const link of screen.getAllByRole('link', { name: 'Blog' })) {
       expect(link).not.toHaveAttribute('aria-current')
@@ -163,7 +171,9 @@ describe('Beeezo blog routes', () => {
     expect(
       screen.getByText('The internet is filling with synthetic traffic.'),
     ).toBeVisible()
-    expect(screen.getByRole('link', { name: 'Back to all ideas' })).toHaveAttribute('href', '/')
+    expect(screen.getByRole('link', { name: 'Back to all articles' })).toHaveAttribute('href', '/')
+    expect(screen.getByText('Share this article')).toBeVisible()
+    expect(screen.getByRole('heading', { level: 2, name: 'Next article' })).toBeVisible()
     expect(
       screen.getByRole('link', { name: 'Read this edition on LinkedIn' }),
     ).toHaveAttribute('href', 'https://www.linkedin.com/pulse/marketing-beyond-bots-beeezo-zueye')
@@ -208,28 +218,32 @@ describe('Beeezo blog routes', () => {
     ).toBeVisible()
   })
 
-  it('preserves cited passages from The Web3 Pulse as quotations', () => {
-    renderRoute('/hidden-giants-the-blockchain-ecosystems-you-may-have-missed')
+  it('opens a complete Weekly Blockchain Digest edition in the local reader', () => {
+    renderRoute('/weekly-blockchain-digest-3')
 
+    expect(screen.getByRole('heading', { level: 1, name: 'Weekly Blockchain Digest #3' })).toBeVisible()
+    expect(screen.getAllByText(/week of July 7–13, 2025/i)).toHaveLength(2)
     expect(
-      screen
-        .getByText(/NEAR Protocol has focused on strengthening its technical infrastructure/)
-        .closest('blockquote'),
-    ).toBeVisible()
+      screen.getByRole('link', { name: 'Subscribe to Weekly Blockchain Digest on LinkedIn' }),
+    ).toHaveAttribute(
+      'href',
+      'https://www.linkedin.com/newsletters/weekly-blockchain-digest-7346307320403910658',
+    )
   })
 
   it('updates page metadata and points readers to the next local edition', () => {
     renderRoute('/marketing-beyond-bots')
 
-    expect(document.title).toBe('Marketing Beyond Bots — Beeezo Journal')
+    expect(document.title).toBe('Marketing Beyond Bots | Beeezo Journal')
     expect(document.querySelector('meta[name="description"]')).toHaveAttribute(
       'content',
       'Synthetic traffic is expanding. Human attention is not. The market will eventually learn to price the difference.',
     )
-    expect(screen.getByRole('link', { name: /Read next: The Quiet Collapse/i })).toHaveAttribute(
-      'href',
-      '/the-quiet-collapse-of-the-lead-funnel',
-    )
+    expect(
+      screen.getByRole('link', {
+        name: 'Read next: Macro Moves Prices. Infrastructure Moves Markets.',
+      }),
+    ).toHaveAttribute('href', '/macro-moves-prices-infrastructure-moves-markets/')
   })
 
   it('confirms when the current Beeezo reader link has been copied', async () => {
@@ -256,12 +270,16 @@ describe('Beeezo blog routes', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Copy article link' }))
     expect(await screen.findByRole('button', { name: 'Link copied' })).toBeVisible()
-    fireEvent.click(screen.getByRole('link', { name: /Read next: The Quiet Collapse/i }))
+    fireEvent.click(
+      screen.getByRole('link', {
+        name: 'Read next: Macro Moves Prices. Infrastructure Moves Markets.',
+      }),
+    )
 
     expect(
       await screen.findByRole('heading', {
         level: 1,
-        name: 'The Quiet Collapse of the Lead Funnel',
+        name: 'Macro Moves Prices. Infrastructure Moves Markets.',
       }),
     ).toBeVisible()
     expect(screen.getByRole('button', { name: 'Copy article link' })).toBeVisible()

@@ -19,9 +19,10 @@ export const newsletterById = {
     archiveUrl:
       'https://www.linkedin.com/newsletters/smarter-marketing-solutions-7416963116816838656',
   },
-  'the-web3-pulse': {
-    name: 'The Web3 Pulse',
-    archiveUrl: 'https://www.linkedin.com/newsletters/the-web3-pulse-7307407314402074624',
+  'weekly-blockchain-digest': {
+    name: 'Weekly Blockchain Digest',
+    archiveUrl:
+      'https://www.linkedin.com/newsletters/weekly-blockchain-digest-7346307320403910658',
   },
 } satisfies Record<NewsletterId, Newsletter>
 

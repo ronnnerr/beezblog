@@ -8,12 +8,12 @@ This repository mirrors public material produced by Beeezo. The local copies let
 - Wordmark: extracted without modification from the `site-header__logo-mark` asset embedded in Beeezo's production stylesheet on September 4, 2026.
 - Site icon: <https://www.beeezo.com/icon.png>
 - Onest font files: the same Google Fonts WOFF2 files referenced by Beeezo's production stylesheet.
-- Color values: copied from Beeezo's production stylesheets. See the design specification for the constrained palette.
+- Color values: copied from Beeezo's production stylesheets. See [design-system/MASTER.md](../design-system/MASTER.md) for the constrained palette.
 
 ## Newsletter editions
 
 - Smarter Marketing Solutions archive: <https://www.linkedin.com/newsletters/smarter-marketing-solutions-7416963116816838656>
-- The Web3 Pulse archive: <https://www.linkedin.com/newsletters/the-web3-pulse-7307407314402074624>
+- Weekly Blockchain Digest archive: <https://www.linkedin.com/newsletters/weekly-blockchain-digest-7346307320403910658>
 
 | Local slug | Original public edition |
 | --- | --- |
@@ -32,16 +32,12 @@ This repository mirrors public material produced by Beeezo. The local copies let
 | `from-attention-to-intention` | <https://www.linkedin.com/pulse/from-attention-intention-beeezo-mdyae> |
 | `trust-is-the-new-growth-engine` | <https://www.linkedin.com/pulse/trust-new-growth-engine-beeezo-hzj2e> |
 | `the-world-of-modern-marketing-and-advertising` | <https://www.linkedin.com/pulse/world-modern-marketing-advertising-from-influence-participation-uzthe> |
-| `the-money-game-navigating-web3s-evolving-funding-landscape` | <https://www.linkedin.com/pulse/money-game-navigating-web3s-evolving-funding-landscape-web3-pulse-bjhbf> |
-| `gamefi-boom-where-gaming-meets-web3-rewards` | <https://www.linkedin.com/pulse/gamefi-boom-where-gaming-meets-web3-rewards-pulse-beeezo-su7of> |
-| `decentralization-unchained-the-new-wave-of-web3-trends` | <https://www.linkedin.com/pulse/decentralization-unchained-new-wave-web3-trends-pulse-3-beeezo-wtkwf> |
-| `rwa-revolution-how-tokenization-is-reshaping-ownership` | <https://www.linkedin.com/pulse/rwa-revolution-how-tokenization-reshaping-ownership-web3-pulse-y842f> |
-| `hidden-giants-the-blockchain-ecosystems-you-may-have-missed` | <https://www.linkedin.com/pulse/hidden-giants-blockchain-ecosystems-you-may-have-missed-beeezo-dhh7f> |
+The table above covers all 15 Smarter Marketing Solutions editions. The 64 Weekly Blockchain Digest source URLs are kept in the validated manifest at `scripts/sergey-newsletter-manifest.mjs`: numbered editions 1 through 63 plus the separate August 23, 2026 archive special. Every imported article also retains its exact LinkedIn URL in `src/content/articles.json`.
 
-Article copy, publication dates, source links, cover artwork, and available inline artwork were captured from the public editions on September 4, 2026. The short archive descriptions are faithful excerpts or close editorial condensations of each edition's opening argument. LinkedIn sign-in was not required for the two public archive pages or their article bodies.
+Article copy, publication dates, source links, cover artwork, and available inline artwork were captured from the verified public editions through September 7, 2026. Archive descriptions use the opening copy from each edition.
 
 ## Updating content
 
 `src/content/articles.json` is the current content boundary. New entries must conform to `src/content/types.ts`, use a unique stable slug, select one of the typed newsletter IDs, store cover art under `public/images/articles/`, and include an original source URL for provenance and the reader endcap. Newsletter archive destinations are allowlisted in `src/content/articles.ts`. Body links accept only explicit `http://` or `https://` values.
 
-Before publishing imported copy, confirm Beeezo still owns or has permission to republish both the text and artwork.
+Before publishing imported copy, confirm Beeezo and Sergey Kiklevich have approved republication of the text and artwork.

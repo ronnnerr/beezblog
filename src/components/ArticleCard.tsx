@@ -18,7 +18,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
 export function ArticleCard({ article, featured = false }: ArticleCardProps) {
   return (
     <article className={`article-card${featured ? ' article-card--featured' : ''}`}>
-      <Link className="article-card__link" to={`/${article.slug}`} aria-label={`Read: ${article.title}`}>
+      <Link className="article-card__link" to={`/${article.slug}/`} aria-label={`Read: ${article.title}`}>
         <div className="article-card__media">
           <img
             src={assetUrl(article.cover)}
@@ -40,7 +40,7 @@ export function ArticleCard({ article, featured = false }: ArticleCardProps) {
           <h2>{article.title}</h2>
           <p>{article.dek}</p>
           <span className="article-card__action" aria-hidden="true">
-            Read idea <ArrowIcon />
+            Read article <ArrowIcon />
           </span>
         </div>
       </Link>

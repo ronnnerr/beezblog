@@ -37,16 +37,16 @@ describe('article LinkedIn endcap', () => {
     )
   })
 
-  it('links a Web3 article to its edition and The Web3 Pulse archive', () => {
-    renderArticle('hidden-giants-the-blockchain-ecosystems-you-may-have-missed')
+  it('links a Digest article to its edition and Weekly Blockchain Digest archive', () => {
+    renderArticle('weekly-blockchain-digest-3')
 
     expectExternalDestination(
-      screen.getByRole('link', { name: 'Subscribe to The Web3 Pulse on LinkedIn' }),
-      'https://www.linkedin.com/newsletters/the-web3-pulse-7307407314402074624',
+      screen.getByRole('link', { name: 'Subscribe to Weekly Blockchain Digest on LinkedIn' }),
+      'https://www.linkedin.com/newsletters/weekly-blockchain-digest-7346307320403910658',
     )
     expectExternalDestination(
       screen.getByRole('link', { name: 'Read this edition on LinkedIn' }),
-      'https://www.linkedin.com/pulse/hidden-giants-blockchain-ecosystems-you-may-have-missed-beeezo-dhh7f',
+      'https://www.linkedin.com/pulse/weekly-blockchain-digest-3-sergey-kiklevich-j2nve',
     )
   })
 })

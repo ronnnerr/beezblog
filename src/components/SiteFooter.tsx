@@ -5,10 +5,10 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="site-footer__lead">
-        <p className="eyebrow">Keep exploring</p>
-        <p className="site-footer__statement">Attention starts it. Action proves it.</p>
+        <p className="eyebrow">Keep reading</p>
+        <p className="site-footer__statement">More from Beeezo.</p>
         <Link className="text-link text-link--light" to="/">
-          Browse all ideas
+          Browse all articles
         </Link>
       </div>
       <div className="site-footer__base">

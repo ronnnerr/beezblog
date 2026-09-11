@@ -7,14 +7,18 @@ import { articles, getArticleBySlug, getNextArticle } from './articles'
 
 describe('Beeezo article collection', () => {
   it('contains every edition from both verified Beeezo newsletter archives', () => {
-    expect(articles).toHaveLength(20)
-    expect(new Set(articles.map((article) => article.slug)).size).toBe(20)
+    expect(articles).toHaveLength(79)
+    expect(new Set(articles.map((article) => article.slug)).size).toBe(79)
+    expect(new Set(articles.map((article) => article.sourceUrl)).size).toBe(79)
+    expect(articles.filter((article) => article.newsletter === 'smarter-marketing-solutions')).toHaveLength(15)
+    expect(articles.filter((article) => article.newsletter === 'weekly-blockchain-digest')).toHaveLength(64)
 
     for (const article of articles) {
       expect(article.slug).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
-      expect(article.cover).toMatch(/^\/images\/articles\/.+\.(?:png|jpg)$/)
+      expect(article.cover).toMatch(/^\/images\/articles\/.+\.(?:avif|gif|jpe?g|png|webp)$/)
       expect(article.sourceUrl).toMatch(/^https:\/\/www\.linkedin\.com\/pulse\//)
       expect(article.blocks.length).toBeGreaterThan(5)
+      expect(article.newsletter).not.toBe('the-web3-pulse')
     }
   })
 
@@ -33,7 +37,7 @@ describe('Beeezo article collection', () => {
     for (const article of articles) {
       for (const block of article.blocks) {
         if (block.type === 'image') {
-          expect(block.src).toMatch(/^\/images\/articles\/.+\.(?:png|jpg)$/)
+          expect(block.src).toMatch(/^\/images\/articles\/.+\.(?:avif|gif|jpe?g|png|webp)$/)
           expect(block.alt).not.toBe('')
           continue
         }
@@ -55,7 +59,7 @@ describe('Beeezo article collection', () => {
     }
   })
 
-  it('resolves every cover and inline image to a checked-in public asset', () => {
+  it('resolves every cover and inline image to a local public asset', () => {
     for (const article of articles) {
       const imagePaths = [
         article.cover,

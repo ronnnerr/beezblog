@@ -6,13 +6,10 @@ export type ArticleTopic =
   | 'Measurement'
   | 'Product experience'
   | 'Stablecoins'
-  | 'GameFi'
-  | 'Tokenization'
   | 'Verified attention'
-  | 'Web3 ecosystems'
-  | 'Web3 funding'
+  | 'Blockchain & finance'
 
-export type NewsletterId = 'smarter-marketing-solutions' | 'the-web3-pulse'
+export type NewsletterId = 'smarter-marketing-solutions' | 'weekly-blockchain-digest'
 
 export interface Newsletter {
   name: string

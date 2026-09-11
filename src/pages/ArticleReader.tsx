@@ -39,7 +39,7 @@ export function ArticleReader() {
     }
 
     const previousDescription = description.content
-    document.title = `${article.title} — Beeezo Journal`
+    document.title = `${article.title} | Beeezo Journal`
     description.content = article.dek
 
     return () => {
@@ -64,7 +64,7 @@ export function ArticleReader() {
 
       <div className="reader__topbar">
         <Link className="text-link" to="/">
-          <ArrowIcon direction="left" /> Back to all ideas
+          <ArrowIcon direction="left" /> Back to all articles
         </Link>
         <span>
           {String(position).padStart(2, '0')} / {String(articles.length).padStart(2, '0')}
@@ -98,7 +98,7 @@ export function ArticleReader() {
 
         <div className="reader__layout">
           <aside className="reader__utility" aria-label="Article tools">
-            <p>Share this idea</p>
+            <p>Share this article</p>
             <CopyLinkButton key={article.slug} />
           </aside>
           <ArticleBody blocks={article.blocks} />
@@ -113,11 +113,11 @@ export function ArticleReader() {
         <aside className="next-article" aria-labelledby="next-article-heading">
           <div>
             <p className="eyebrow">Keep reading</p>
-            <h2 id="next-article-heading">Next signal</h2>
+            <h2 id="next-article-heading">Next article</h2>
           </div>
           <Link
             className="next-article__link"
-            to={`/${nextArticle.slug}`}
+            to={`/${nextArticle.slug}/`}
             aria-label={`Read next: ${nextArticle.title}`}
           >
             <span>{nextArticle.title}</span>

@@ -10,3 +10,4 @@ qa-*.png
 .env.*
 !.env.example
 .gstack/
+.cache/
